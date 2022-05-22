@@ -6,9 +6,7 @@ module.exports = mongoose => {
         date: Date,
         content:String,
         author:String,
-        status:{
-          enum:["New", "Archived", "Deleted"]
-        },
+        status:["New", "Archived", "Deleted"],
         archiveDate:Date,
       },
       { timestamps: true } 
