@@ -7,11 +7,11 @@ module.exports = (io) => {
 
     const emitNewNews = async () =>{
         const test = await news.findNewNews()
-        socket.emit("server:findNewNews", test);
+        io.emit("server:findNewNews", test);
     }
     const emitArchivedNews = async () =>{
       const test = await news.findArchivedNews()
-      socket.emit("server:findArchivedNews", test);
+      io.emit("server:findArchivedNews", test);
     }
     
     //Get listeners
@@ -26,7 +26,7 @@ module.exports = (io) => {
     socket.on("client:createNewArticle", async (data) => {
         const test = await news.create(data)
         if (test?.error) {
-            socket.emit("server:createError", test);
+            io.emit("server:createError", test);
         }
         await emitNewNews()
         
@@ -34,7 +34,7 @@ module.exports = (io) => {
     socket.on("client:archiveArticle", async (data) => {
       const test = await news.setArchived(data)
       if (test?.error) {
-          socket.emit("server:archiveError", test);
+          io.emit("server:archiveError", test);
       }
       await emitNewNews()
       
@@ -43,7 +43,7 @@ module.exports = (io) => {
       const test = await news.setDeleted(data)
 
       if (test?.error) {
-          socket.emit("server:deleteError", test);
+          io.emit("server:deleteError", test);
       }
       await emitArchivedNews()
       
