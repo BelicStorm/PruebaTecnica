@@ -2,13 +2,14 @@ import { Route, Routes, } from "react-router-dom";
 import { useEffect } from "react";
 import { useSocket } from "../utils/socket.context";
 import Home from "../pages/home";
+import Archived from "../pages/archived";
 
 import useConsumerReducer from './consumer'
 import {SocketConsumerModel} from "../../core/model/queries/"
 
 const Router = () => {
   const [consumerResult, consume] = useConsumerReducer();
-  const {state,dispatch} = useSocket()
+  const {_,dispatch} = useSocket()
   useEffect(() => {
     const  {CONNECT,DISCONNECT,SOCKET_CONSUMER} = SocketConsumerModel
     consume({consumer:SOCKET_CONSUMER,consumerAction:CONNECT});
@@ -26,6 +27,7 @@ const Router = () => {
     <>
       <Routes>
         <Route exact path='/' element={ <Home /> }  />
+        <Route exact path='/archived' element={ <Archived /> }  />
       </Routes>
     </>
   );

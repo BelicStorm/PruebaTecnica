@@ -11,7 +11,7 @@ const ButtonComponent = ({label,icon,buttonStyle,action,isLoading}) =>{
         loading:isLoading,
         icon:icon,
         loadingIcon: isLoading ? "pi pi-spin pi-sun"  : "",
-        onClick:()=>action
+        onClick:action
 
     }
     return <Button {...args} />

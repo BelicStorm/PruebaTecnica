@@ -6,6 +6,9 @@ const sockets = {
         findArchived:(socket)=>{
             socket.emit("client:findArchivedNews")
         },
+        archiveArticle:(socket,article)=>{
+            socket.emit("client:archiveArticle",article)
+        }
     },
     listener:{
         onNewArticle:(socket,action)=>{

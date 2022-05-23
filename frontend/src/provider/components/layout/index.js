@@ -1,8 +1,8 @@
 import HeaderComponent from "../header";
 
 const defaultMenu = [
-    {label:'New News',icon:'pi pi-fw pi-file'},
-    {label:'Archived News',icon:'pi pi-fw pi-file'}
+    {label:'New News',icon:'pi pi-fw pi-file', url:"/"},
+    {label:'Archived News',icon:'pi pi-fw pi-file', url:"/archived"}
 ]
 
 const Layout = ({children}) => {

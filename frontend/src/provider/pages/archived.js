@@ -6,35 +6,29 @@ import useConsumerReducer from "../router/consumer";
 import { SocketConsumerModel } from "../../core/model/queries";
 
 
-const Home = () => {
+const Archived = () => {
   const [news, setNews] = useState([]);
   const [, consume] = useConsumerReducer();
   const {state} = useSocket()
-  const {FIND_NEW_NEWS,OFF_NEW_ARTICLE,SOCKET_CONSUMER,SET_ARTICLE_ARCHIVED} = SocketConsumerModel
+  const {SOCKET_CONSUMER,FIND_ARCHIVED,OFF_ARCHIVED} = SocketConsumerModel
 
   const newsListener = (data) => {
     console.log(data);
     setNews(data.result)
   };
-  const setArchived = (title) =>{
-    console.log(title);
-    consume({consumer:SOCKET_CONSUMER,consumerAction:SET_ARTICLE_ARCHIVED,variables:{socket:state.socket, title:title } });
-  }
 
   useEffect(() => {
-    
-    console.log("va");
     if (state.socket) {
-      consume({consumer:SOCKET_CONSUMER,consumerAction:FIND_NEW_NEWS,variables:{socket:state.socket, action:newsListener} });
+      consume({consumer:SOCKET_CONSUMER,consumerAction:FIND_ARCHIVED,variables:{socket:state.socket, action:newsListener} });
     }
     return () => {
       if (state.socket) {
-        consume({consumer:SOCKET_CONSUMER,consumerAction:OFF_NEW_ARTICLE,variables:{socket:state.socket, action:newsListener} });
+        consume({consumer:SOCKET_CONSUMER,consumerAction:OFF_ARCHIVED,variables:{socket:state.socket, action:newsListener} });
       }
     };
   }, [state.socket]);
 
-  const transformHomeContent = () =>{
+  const transformArchivedContent = () =>{
     let to_return = []
     to_return = news.map((newsElement)=>{
       const {title,description,content,date,author} = newsElement
@@ -42,8 +36,8 @@ const Home = () => {
                 key={`key-${title}`}
                 footer={
                   <span>
-                      <ButtonComponent label="Archive"
-                                       action={()=>setArchived(title)} 
+                      <ButtonComponent label="Delete"
+                                       action={()=>console.log(title)} 
                                        buttonStyle="primary" 
                                        isLoading={false}></ButtonComponent>
                   </span>
@@ -59,9 +53,9 @@ const Home = () => {
     })
     return to_return
   }
-  return <div className="Home-container">
-      { news.length > 0 ? transformHomeContent() : ""}
+  return <div className="Archived-container">
+      { news.length > 0 ? transformArchivedContent() : ""}
   </div>
 };
 
-export default Home;
+export default Archived;
