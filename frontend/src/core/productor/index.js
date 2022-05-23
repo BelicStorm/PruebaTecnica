@@ -1,4 +1,5 @@
 import {connectProductor,disconnectProductor} from "./socketIo/productor"
+import sockets from "./socketIo/sockets"
 
 const socketProductor = {
     socketConnect: connectProductor,
@@ -6,5 +7,5 @@ const socketProductor = {
 }
 
 export {
-    socketProductor
+    socketProductor,sockets
 }

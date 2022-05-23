@@ -7,7 +7,7 @@ import { useSocket } from "../utils/socket.context";
 async function consumerReducer(consumerState, action, socketState) {
     try {
         const {consumer,consumerAction,variables} = action
-        const variablesPlusSocket = {...variables,socket:socketState}
+        const variablesPlusSocket = {...variables}
         const result = await consumers[consumer][consumerAction](variablesPlusSocket)
         if (result.errors?.length > 0) {
             console.log(result.errors);
