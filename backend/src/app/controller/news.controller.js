@@ -84,8 +84,8 @@ const setArchived = async (data) => {
       archivedDate:new Date(Date.now())
     }
     const title =  data.title
-    const data = await News.findOneAndUpdate({title:title}, to_update , { useFindAndModify: false })
-    if (!data) {
+    const result = await News.findOneAndUpdate({title:title}, to_update , { useFindAndModify: false })
+    if (!result) {
       throw newsException(`Cannot archive ${title}. Maybe was not found!`)
     }
   } catch (error) {
@@ -103,8 +103,8 @@ const setDeleted = async (data) => {
     archivedDate:new Date(Date.now())
   }
   const title = data.title
-  const data = await News.findOneAndUpdate({title:title}, to_delete , { useFindAndModify: false })
-  if (!data) {
+  const result = await News.findOneAndUpdate({title:title}, to_delete , { useFindAndModify: false })
+  if (!result) {
     throw newsException(`Cannot delete ${title}. Maybe was not found!`)
   }
  } catch (error) {
