@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const mongo = require("./app/model/mongo.client.js")
 const io = require("socket.io")
-const sockets = require("./sockets.js")
+const sockets = require("./app/router/sockets.js")
 const app = express();
 
 
