@@ -13,7 +13,12 @@ const Home = () => {
   const {FIND_NEW_NEWS,OFF_NEW_ARTICLE,SOCKET_CONSUMER,SET_ARTICLE_ARCHIVED} = SocketConsumerModel
 
   const newsListener = (data) => {
-    setNews(data.result)
+    if (!data.error) {
+      setNews(data.result)
+    }else {
+      console.log(data);
+    }
+    
   };
   const setArchived = (title) =>{
     consume({consumer:SOCKET_CONSUMER,consumerAction:SET_ARTICLE_ARCHIVED,variables:{socket:state.socket, title:title } });

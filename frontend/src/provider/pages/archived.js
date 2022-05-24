@@ -13,7 +13,11 @@ const Archived = () => {
   const {SOCKET_CONSUMER,FIND_ARCHIVED,OFF_ARCHIVED, SET_ARTICLE_DELETED} = SocketConsumerModel
 
   const newsListener = (data) => {
-    setNews(data.result)
+    if (!data.error) {
+      setNews(data.result)
+    }else {
+      console.log(data);
+    }
   };
   const deleteArticle = (title) =>{
     consume({consumer:SOCKET_CONSUMER,consumerAction:SET_ARTICLE_DELETED,variables:{socket:state.socket, title:title } });
