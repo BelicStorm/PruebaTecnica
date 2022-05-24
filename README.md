@@ -1,4 +1,9 @@
-# Prueba Tecnica
+# Prueba técnica
+
+
+## Index
+- [Frontend](./frontend/README.md)
+- [Backend](./backend/README.md)
 
 ## Diagrama de casos de uso
 <img src="./frontend/media/Diagrama Casos de uso.jpg" alt="casos_de_uso" width="200"/>
