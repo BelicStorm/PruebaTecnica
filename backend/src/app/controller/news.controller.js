@@ -16,13 +16,13 @@ const findAll = async () => {
     return {
       error:true,
       errmsg:
-        err.message || "Some error occurred while retrieving news."
+        error.message || "Some error occurred while retrieving news."
     };
   }
 };
 const findNewNews = async () => {
   try {
-    const result = await News.find({status:"New"})
+    const result = await News.find({status:"New"},null, {sort: "-date"})
     return {
       result:result
     };
@@ -30,13 +30,13 @@ const findNewNews = async () => {
     return {
       error:true,
       errmsg:
-        err.message || "Some error occurred while retrieving news."
+        error.message || "Some error occurred while retrieving news."
     };
   }
 }
 const findArchivedNews = async () => {
   try {
-    const result = await News.find({status:"Archived"})
+    const result = await News.find({status:"Archived"},null, {sort: "-archiveDate"})
     return {
       result:result
     };
@@ -44,7 +44,7 @@ const findArchivedNews = async () => {
     return {
       error:true,
       errmsg:
-        err.message || "Some error occurred while retrieving news."
+        error.message || "Some error occurred while retrieving news."
     };
   }
 }
