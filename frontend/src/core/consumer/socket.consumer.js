@@ -83,6 +83,16 @@ const SocketConsumer = {
         })
      
      },
+     deleteArticle:({socket,title}) =>{
+        return new Promise(async (resolve,reject)=>{
+             try {
+                await sockets.emit[SocketQueryModel.SET_ARTICLE_DELETED](socket,{title:title})
+             } catch (error) {
+                 resolve({error:true, errorMsg:error})
+             }
+        })
+     
+     },
 }
 
 

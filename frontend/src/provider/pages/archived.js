@@ -10,12 +10,14 @@ const Archived = () => {
   const [news, setNews] = useState([]);
   const [, consume] = useConsumerReducer();
   const {state} = useSocket()
-  const {SOCKET_CONSUMER,FIND_ARCHIVED,OFF_ARCHIVED} = SocketConsumerModel
+  const {SOCKET_CONSUMER,FIND_ARCHIVED,OFF_ARCHIVED, SET_ARTICLE_DELETED} = SocketConsumerModel
 
   const newsListener = (data) => {
-    console.log(data);
     setNews(data.result)
   };
+  const deleteArticle = (title) =>{
+    consume({consumer:SOCKET_CONSUMER,consumerAction:SET_ARTICLE_DELETED,variables:{socket:state.socket, title:title } });
+  }
 
   useEffect(() => {
     if (state.socket) {
@@ -37,7 +39,8 @@ const Archived = () => {
                 footer={
                   <span>
                       <ButtonComponent label="Delete"
-                                       action={()=>console.log(title)} 
+                                       icon="pi-trash"
+                                       action={()=>deleteArticle(title)} 
                                        buttonStyle="primary" 
                                        isLoading={false}></ButtonComponent>
                   </span>

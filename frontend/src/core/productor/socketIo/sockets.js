@@ -8,6 +8,9 @@ const sockets = {
         },
         archiveArticle:(socket,article)=>{
             socket.emit("client:archiveArticle",article)
+        },
+        deleteArticle:(socket,article)=>{
+            socket.emit("client:deleteArticle",article)
         }
     },
     listener:{

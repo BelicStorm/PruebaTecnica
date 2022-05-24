@@ -13,11 +13,9 @@ const Home = () => {
   const {FIND_NEW_NEWS,OFF_NEW_ARTICLE,SOCKET_CONSUMER,SET_ARTICLE_ARCHIVED} = SocketConsumerModel
 
   const newsListener = (data) => {
-    console.log(data);
     setNews(data.result)
   };
   const setArchived = (title) =>{
-    console.log(title);
     consume({consumer:SOCKET_CONSUMER,consumerAction:SET_ARTICLE_ARCHIVED,variables:{socket:state.socket, title:title } });
   }
 

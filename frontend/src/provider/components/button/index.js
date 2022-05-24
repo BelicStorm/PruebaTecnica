@@ -9,7 +9,7 @@ const ButtonComponent = ({label,icon,buttonStyle,action,isLoading}) =>{
         label: label,
         className: styles[buttonStyle],
         loading:isLoading,
-        icon:icon,
+        icon:icon ? `pi ${icon}` :"",
         loadingIcon: isLoading ? "pi pi-spin pi-sun"  : "",
         onClick:action
 
