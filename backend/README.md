@@ -13,9 +13,9 @@
 
 ## Install & Run
 
-	```console
-		docker-compose up --build
-	```
+```console
+	docker-compose up --build
+```
 
 ## Structure & Usage
 
