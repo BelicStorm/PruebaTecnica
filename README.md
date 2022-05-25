@@ -5,10 +5,10 @@ The objective is to create a prototype of app which provides information about N
 
 The aplication has two views: New News and Archived News.
 - New News View
-<img src="./frontend/media/pt1.jpg" alt="new news" width="300"/>
+<img src="./frontend/media/pt1.png" alt="new news" width="300"/>
 
 - Archived News
-<img src="./frontend/media/pt2.jpg" alt="archived news" width="300"/>
+<img src="./frontend/media/pt2.png" alt="archived news" width="300"/>
 
 The two frontend views consume all his data from the Socket server endpoints as we see in the frontend documentation. The server has a several endpoints dont used by the fronted like the Create article.
 
