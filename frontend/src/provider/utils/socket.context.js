@@ -1,5 +1,6 @@
 import React from 'react';
 
+/* Creamos un contexto para manejar el puntero del socket */
 const SocketContext = React.createContext();
 const defaultState = {socket:undefined}
 
@@ -20,6 +21,7 @@ function socketReducer(state, action) {
   }
 }
 
+/* Provider que usaremos para poder acceder al reducer para obtener el contexto o modificarlo */
 function SocketProvider({children}) {
   const [state, dispatch] = React.useReducer(socketReducer, defaultState )
 
@@ -27,6 +29,7 @@ function SocketProvider({children}) {
   return <SocketContext.Provider value={value}>{children}</SocketContext.Provider>
 }
 
+/* Hook que usaremos para poder manejar el contexto del socket */
 function useSocket() {
   const context = React.useContext(SocketContext)
   if (context === undefined) {

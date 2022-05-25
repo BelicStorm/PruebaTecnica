@@ -8,8 +8,10 @@ import useConsumerReducer from './consumer'
 import {SocketConsumerModel} from "../../core/model/queries/"
 
 const Router = () => {
+
   const [consumerResult, consume] = useConsumerReducer();
   const {_,dispatch} = useSocket()
+  /* Cuando la aplicacion inicie consumiremos del endpoint encargado de conectar el websocket. Cuando la aplicacion se desmonte nos desconectaremos */
   useEffect(() => {
     const  {CONNECT,DISCONNECT,SOCKET_CONSUMER} = SocketConsumerModel
     consume({consumer:SOCKET_CONSUMER,consumerAction:CONNECT});
@@ -18,11 +20,13 @@ const Router = () => {
       dispatch({type:"delete"})
     }
   }, []);
+  /* Cuando haya un cambio en la respuesta del consumer y esta sea que se ha conectado sin problemas, guardaremos el puntero del socket en el contexto de la aplicacion  */
   useEffect(()=>{
     if (consumerResult) {
       dispatch({type:"connect", socket:consumerResult.result})
     }
   },[consumerResult])
+
   return (
     <>
       <Routes>

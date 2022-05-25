@@ -3,11 +3,12 @@ import consumers from "../../core/consumer/";
 import { useSocket } from "../utils/socket.context";
 
 
-
+/* Reducer encargado de llamar a los consumers del core y gestionar las respuestas para capturar errores */
 async function consumerReducer(consumerState, action, socketState) {
     try {
         const {consumer,consumerAction,variables} = action
         const variablesPlusSocket = {...variables}
+        /* ejemplo:                    testConsumer.findByName({name:"name"}) */
         const result = await consumers[consumer][consumerAction](variablesPlusSocket)
         if (result.errors?.length > 0) {
             console.log(result.errors);
@@ -19,6 +20,7 @@ async function consumerReducer(consumerState, action, socketState) {
     }
 }
 
+/* Hook encargado de gestionar las llamadas y resultados al consumer reducer */
 function useConsumerReducer() {
     const [consumerResult, setResult] = useState(null);
     const {state} = useSocket()

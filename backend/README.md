@@ -1,21 +1,30 @@
 
-#  Agente comercial configuraciones Iniciales
+#  Backend
 ## Spec
- - **React.js** v18
- - **[Prime React](https://www.primefaces.org/primereact/setup/)** v8
- - **Graphql** v16,4
- - **Apollo Client** v3.6.2
-
+ - **express** v4.18.1
+ - **mongoose** v6.3.4
+ - **socket.io** v4.4.1
 ## Index
-- Frontend
+- Backend
 	- Install & Run
 	- Structure & Usage
-		- [Core](./src/core/README.md)
-		- [Provider](./src/provider/README.md)
-	- [Deploy](./deploy/README.md)
-- Backend
-- FAQ
+		- controller
+		- router
 
-## FAQ
+## Install & Run
+
+	```console
+		docker-compose up --build
+	```
+
+## Structure & Usage
+
+### Controller
+Manages the Crud of the Articles.
+
+### Router
+In the router we find the listeners and emitters that will allow us to access the controllers and thus manage the news database.
+ 
+
 
 

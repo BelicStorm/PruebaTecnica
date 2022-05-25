@@ -3,6 +3,7 @@ import {socketProductor} from "../productor/index"
 import {SocketQueryModel} from "../model/queries/"
 import {sockets} from "../productor/index"
 
+/* Consumidor que accede al productor de Socketio */
 const SocketConsumer = {
     socketConnect:() =>{
         return new Promise(async (resolve,reject)=>{
