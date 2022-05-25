@@ -13,14 +13,14 @@
 
 ## Install
 
-	```console
-		npm run install
-	```
+```console
+	npm run install
+```
 ## Run
 
-	```console
-		npm run start
-	```
+```console
+	npm run start
+```
 
 ## Structure & Usage
 
